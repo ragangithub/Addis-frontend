@@ -73,7 +73,7 @@ const SongsPage = () => {
     <>
       <Div padding={6} backgroundColor="rgb(249,250,251)">
         <Link
-          to="/new-song"
+          to="/form"
           style={{
             textDecoration: "none",
             padding: 5,
