@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { SongCard } from "../components/SongCard";
 import { Statistics } from "../components/Statistics";
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { songSelector } from "../redux/store";
+import { getSongPending } from "../redux/songs/songSlice";
 
 import {
   typography,
@@ -69,6 +73,15 @@ const Span = styled.span<StyledDivProps>`
   }
 `;
 const SongsPage = () => {
+  const { songs, isLoading } = useAppSelector(songSelector);
+  const dispatch = useAppDispatch();
+  console.log("songs", songs);
+
+  useEffect(() => {
+    dispatch(getSongPending());
+  }, [dispatch]);
+
+  if (isLoading) return <div>loading...</div>;
   return (
     <>
       <Div padding={6} backgroundColor="rgb(249,250,251)">
@@ -84,9 +97,9 @@ const SongsPage = () => {
         </Link>
 
         <CardContainer>
-          <SongCard />
-          <SongCard />
-          <SongCard />
+          {songs.map((song, index) => (
+            <SongCard key={index} song={song} />
+          ))}
         </CardContainer>
       </Div>
       <Statistics />

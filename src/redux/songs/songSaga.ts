@@ -10,8 +10,9 @@ import {
 
 function* fetchSongs(): Generator<any, void, any> {
   try {
-    const songs = yield call(() => axios.get(`${baseURL}/read`));
-    const formattedSong = yield songs.data.songs;
+    const songs = yield call(() => axios.get(`${baseURL}`));
+
+    const formattedSong = yield songs.data;
     yield put(getSongSuccess(formattedSong));
   } catch (error) {
     console.log(error);

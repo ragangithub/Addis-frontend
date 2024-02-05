@@ -67,7 +67,17 @@ const P = styled.p<StyledDivProps>`
   ${color}
 `;
 
-export const SongCard = () => {
+interface SongCardProps {
+  song: {
+    _id: string;
+    title: string;
+    artist: string;
+    album: string;
+    genre: string;
+  };
+}
+
+export const SongCard = ({ song }: SongCardProps) => {
   const handleCardClick = () => {
     console.log("Hello");
   };
@@ -80,11 +90,11 @@ export const SongCard = () => {
       onClick={handleCardClick}
     >
       <H1 fontSize={23} textAlign="center">
-        title
+        {song.title}
       </H1>
-      <P fontSize={15}>Artist:</P>
-      <P fontSize={15}>Album:</P>
-      <P fontSize={15}>Genre:</P>
+      <P fontSize={15}>Artist: {song.artist}</P>
+      <P fontSize={15}>Album: {song.album}</P>
+      <P fontSize={15}>Genre: {song.genre}</P>
     </Div>
   );
 };
