@@ -56,12 +56,6 @@ const Div = styled.div<StyledDivProps>`
   }
 `;
 
-const Wrapper = styled.div<StyledDivProps>`
-  ${position}
-  ${top}
-  ${zIndex}
-`;
-
 interface Link {
   path: string;
   label: string;
@@ -76,13 +70,15 @@ const links: Link[] = [
 
 export const Navbar = () => {
   return (
-    <div>
+    <>
       <Nav
         position="sticky"
+        top={0}
         zIndex={30}
         display="flex"
         justifyContent="space-between"
         padding={2}
+        backgroundColor="white"
       >
         <BrandName fontSize={4} color="red">
           Addis Songs
@@ -108,6 +104,6 @@ export const Navbar = () => {
           ))}
         </Div>
       </Nav>
-    </div>
+    </>
   );
 };
