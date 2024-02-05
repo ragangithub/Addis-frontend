@@ -63,8 +63,7 @@ interface Link {
 
 const links: Link[] = [
   { path: "/", label: "Home" },
-  { path: "/songs", label: "My Songs" },
-  { path: "/artists", label: "Artists" },
+  { path: "/songs", label: "Songs" },
   { path: "/albums", label: "Albums" },
 ];
 

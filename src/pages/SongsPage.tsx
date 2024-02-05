@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { SongCard } from "../components/SongCard";
+import { Statistics } from "../components/Statistics";
 
 import {
   typography,
@@ -69,24 +70,27 @@ const Span = styled.span<StyledDivProps>`
 `;
 const SongsPage = () => {
   return (
-    <Div padding={6} backgroundColor="rgb(249,250,251)">
-      <Link
-        to="/new-song"
-        style={{
-          textDecoration: "none",
-          padding: 5,
-          backgroundColor: "rgb(173, 216, 230)",
-        }}
-      >
-        Add new Song
-      </Link>
+    <>
+      <Div padding={6} backgroundColor="rgb(249,250,251)">
+        <Link
+          to="/new-song"
+          style={{
+            textDecoration: "none",
+            padding: 5,
+            backgroundColor: "rgb(173, 216, 230)",
+          }}
+        >
+          Add new Song
+        </Link>
 
-      <CardContainer>
-        <SongCard />
-        <SongCard />
-        <SongCard />
-      </CardContainer>
-    </Div>
+        <CardContainer>
+          <SongCard />
+          <SongCard />
+          <SongCard />
+        </CardContainer>
+      </Div>
+      <Statistics />
+    </>
   );
 };
 
