@@ -76,7 +76,7 @@ export const Hero = () => {
       justifyContent="center"
     >
       <Div textAlign="center" color="white" width="50%">
-        <H1 fontSize={50}>The Best of the Best!</H1>
+        <H1 fontSize={50}>The Best Musics!</H1>
 
         <P textAlign="center" fontSize={20}>
           Curated Music Collections: A carefully selected assortment of timeless

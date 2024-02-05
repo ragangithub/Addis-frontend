@@ -77,20 +77,20 @@ export const Navbar = () => {
         zIndex={30}
         display="flex"
         justifyContent="space-between"
-        padding={2}
+        padding={4}
         backgroundColor="white"
       >
-        <BrandName fontSize={4} color="red">
+        <BrandName fontSize={4} color="rgb(66,0,57)">
           Addis Songs
         </BrandName>
         <Div
-          fontSize={4}
-          color="mainColor"
+          fontSize={2}
+          color="rgb(66,0,57)"
           display="flex"
           justifyContent="space-between"
         >
           {links.map((link) => (
-            <Div key={link.label} margin={1} color="red">
+            <Div key={link.label} margin={2} color="red">
               <NavLink
                 to={link.path}
                 style={({ isActive }) => ({
