@@ -24,7 +24,7 @@ const songSlice = createSlice({
   initialState,
   reducers: {
     // post song
-    postSongPending: (state) => {
+    postSongPending: (state, action) => {
       state.isLoading = true;
     },
     postSongSuccess: (state, action) => {

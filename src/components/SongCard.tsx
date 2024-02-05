@@ -78,6 +78,7 @@ interface SongCardProps {
 }
 
 export const SongCard = ({ song }: SongCardProps) => {
+  console.log("songggggggg", song);
   const handleCardClick = () => {
     console.log("Hello");
   };
@@ -90,11 +91,11 @@ export const SongCard = ({ song }: SongCardProps) => {
       onClick={handleCardClick}
     >
       <H1 fontSize={23} textAlign="center">
-        {song.title}
+        {song?.title}
       </H1>
-      <P fontSize={15}>Artist: {song.artist}</P>
-      <P fontSize={15}>Album: {song.album}</P>
-      <P fontSize={15}>Genre: {song.genre}</P>
+      <P fontSize={15}>Artist: {song?.artist}</P>
+      <P fontSize={15}>Album: {song?.album}</P>
+      <P fontSize={15}>Genre: {song?.genre}</P>
     </Div>
   );
 };

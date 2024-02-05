@@ -1,4 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../redux/hooks";
+import { postSongPending } from "../redux/songs/songSlice";
 import styled from "@emotion/styled";
 import {
   typography,
@@ -65,36 +68,46 @@ const Button = styled.button<StyledDivProps>`
     cursor: pointer;
   }
 `;
+interface FormValues {
+  artist: string;
+  title: string;
+  album: string;
+  genre: string;
+}
 
 const FormPage = () => {
-  const [artist, setArtist] = useState<string>("");
-  const [title, setTitle] = useState<string>("");
-  const [album, setAlbum] = useState<string>("");
-  const [genre, setGenre] = useState<string>("");
-  const handleGenreChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setGenre(e.target.value);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [formValues, setFormValues] = useState<FormValues>({
+    artist: "",
+    title: "",
+    album: "",
+    genre: "",
+  });
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
-  const handleArtistChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setArtist(e.target.value);
-  };
-  const handleAlbumChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setAlbum(e.target.value);
-  };
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
+  const { artist, title, album, genre } = formValues;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("Artist:", artist);
-    console.log("Title:", title);
+    dispatch(postSongPending(formValues));
 
-    setArtist("");
-    setTitle("");
-    setAlbum("");
-    setGenre("");
+    // setFormValues({
+    //   title: "",
+    //   artist: "",
+    //   album: "",
+    //   genre: "",
+    // });
   };
   return (
     <Div padding={6} display="flex" justifyContent="center" alignItems="center">
@@ -106,8 +119,9 @@ const FormPage = () => {
             <input
               type="text"
               id="artist"
+              name="artist"
               value={artist}
-              onChange={handleArtistChange}
+              onChange={handleInputChange}
               style={{
                 padding: "8px",
                 border: "1px solid #ccc",
@@ -122,8 +136,9 @@ const FormPage = () => {
             <input
               type="text"
               id="title"
+              name="title"
               value={title}
-              onChange={handleTitleChange}
+              onChange={handleInputChange}
               style={{
                 padding: "8px",
                 border: "1px solid #ccc",
@@ -138,8 +153,9 @@ const FormPage = () => {
             <input
               type="text"
               id="album"
+              name="album"
               value={album}
-              onChange={handleAlbumChange}
+              onChange={handleInputChange}
               style={{
                 padding: "8px",
                 border: "1px solid #ccc",
@@ -154,8 +170,9 @@ const FormPage = () => {
             <input
               type="text"
               id="genre"
+              name="genre"
               value={genre}
-              onChange={handleGenreChange}
+              onChange={handleInputChange}
               style={{
                 padding: "8px",
                 border: "1px solid #ccc",
