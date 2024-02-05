@@ -1,7 +1,22 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { SongsPage, AlbumsPage, ArtistsPage, GenrePage, Home } from "./pages";
+import { Navbar } from "./components/Navbar";
 
 function App() {
-  return <div className="App">hi</div>;
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/songs" element={<SongsPage />} />
+        <Route path="/albums" element={<AlbumsPage />} />
+        <Route path="/artists" element={<ArtistsPage />} />
+        <Route path="/genre" element={<GenrePage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
