@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { AlbumCard } from "../components/AlbumCard";
 import { Statistics } from "../components/Statistics";
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { albumSelector } from "../redux/store";
+import { getAlbumPending } from "../redux/albums/albumSlice";
 
 import {
   typography,
@@ -63,15 +67,28 @@ const H1 = styled.h1<StyledDivProps>`
   ${color}
 `;
 const AlbumsPage = () => {
+  const { albums, isLoading } = useAppSelector(albumSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAlbumPending());
+  }, [dispatch]);
+
+  if (isLoading) return <div>loading...</div>;
   return (
     <>
       <Div padding={6} backgroundColor="rgb(249,250,251)">
         <H1 color="rgb(66,0,57)">Albums</H1>
 
+        {/* <CardContainer>
+          <AlbumCard />
+          <AlbumCard />
+          <AlbumCard />
+        </CardContainer> */}
         <CardContainer>
-          <AlbumCard />
-          <AlbumCard />
-          <AlbumCard />
+          {albums.map((album, index) => (
+            <AlbumCard key={index} album={album} />
+          ))}
         </CardContainer>
       </Div>
       <Statistics />

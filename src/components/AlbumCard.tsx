@@ -67,7 +67,13 @@ const P = styled.p<StyledDivProps>`
   ${color}
 `;
 
-export const AlbumCard = () => {
+interface AlbumCardProps {
+  album: {
+    album: string;
+    songCount: number;
+  };
+}
+export const AlbumCard = ({ album }: AlbumCardProps) => {
   const handleCardClick = () => {
     console.log("Hello");
   };
@@ -80,9 +86,10 @@ export const AlbumCard = () => {
       onClick={handleCardClick}
     >
       <H1 fontSize={23} textAlign="center">
-        Album
+        {/* Album */}
+        {album.album}
       </H1>
-      <P fontSize={15}>Songs:</P>
+      <P fontSize={15}>Songs:{album.songCount}</P>
     </Div>
   );
 };
