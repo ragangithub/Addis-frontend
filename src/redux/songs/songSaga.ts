@@ -16,7 +16,6 @@ function* fetchSongs(): Generator<any, void, any> {
     yield put(getSongSuccess(formattedSong));
   } catch (error) {
     console.log(error);
-    // Handle error here
   }
 }
 
@@ -29,37 +28,35 @@ function* createSong(action: any): Generator<any, void, any> {
     yield put(postSongSuccess(createdSong));
   } catch (error) {
     console.log(error);
-    // Handle error here
   }
 }
 
 function* updateSong(action: any): Generator<any, void, any> {
   try {
     const data = action.payload;
+
     const response = yield call(() =>
-      axios.patch(`${baseURL}/update/${data._id}`, data)
+      axios.patch(`${baseURL}/${data.id}`, data)
     );
-    const updateSong = yield response.data.song;
+
+    const updateSong = yield response.data;
+
     yield put(updateSongSuccess(updateSong));
   } catch (error) {
     console.log(error);
-    // Handle error here
   }
 }
 
 function* deleteSong(action: any): Generator<any, void, any> {
   try {
     const data = action.payload;
-    console.log(data);
-    const response = yield call(() =>
-      axios.delete(baseURL + "/delete/" + data)
-    );
+
+    const response = yield call(() => axios.delete(`${baseURL}/${data}`));
     const updateSong = yield response.data;
     console.log(updateSong, "response");
     yield put(deleteSongSuccess(data));
   } catch (error) {
     console.log(error);
-    // Handle error here
   }
 }
 

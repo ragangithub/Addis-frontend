@@ -1,7 +1,14 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../redux/hooks";
-import { postSongPending } from "../redux/songs/songSlice";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+import {
+  deleteSongPending,
+  getSongPending,
+  updateSongPending,
+} from "../redux/songs/songSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { songSelector } from "../redux/store";
+
 import styled from "@emotion/styled";
 import {
   typography,
@@ -31,6 +38,7 @@ interface StyledDivProps {
   width?: number;
   height?: string;
   marginTop?: number;
+  marginLeft?: number;
 }
 
 const Div = styled.div<StyledDivProps>`
@@ -63,8 +71,8 @@ const Button = styled.button<StyledDivProps>`
   ${typography}
     ${space}
     ${color}
-
-    &:hover {
+    margin-left: ${({ marginLeft }) => marginLeft || 0};
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -75,9 +83,10 @@ interface FormValues {
   genre: string;
 }
 
-const FormPage = () => {
+const DetailPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { id } = useParams();
 
   const [formValues, setFormValues] = useState<FormValues>({
     artist: "",
@@ -85,6 +94,25 @@ const FormPage = () => {
     album: "",
     genre: "",
   });
+
+  const { songs, isLoading } = useAppSelector(songSelector);
+
+  let song = songs.filter((song) => song._id === id);
+
+  useEffect(() => {
+    if (song[0]) {
+      setFormValues({
+        artist: song[0]?.artist,
+        title: song[0]?.title,
+        album: song[0]?.album,
+        genre: song[0]?.genre,
+      });
+    }
+  }, [id]);
+
+  useEffect(() => {
+    dispatch(getSongPending());
+  }, [dispatch]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -97,24 +125,23 @@ const FormPage = () => {
 
   const { artist, title, album, genre } = formValues;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log("edit");
+    dispatch(updateSongPending({ ...formValues, id }));
+    navigate("/songs");
+  };
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    dispatch(postSongPending(formValues));
-
-    setFormValues({
-      title: "",
-      artist: "",
-      album: "",
-      genre: "",
-    });
+    dispatch(deleteSongPending(id));
     navigate("/songs");
   };
   return (
     <Div padding={6} display="flex" justifyContent="center" alignItems="center">
       <FormContainer padding={3} width={400} backgroundColor="#f5f5f5">
-        <H1>Add Song</H1>
-        <form onSubmit={handleSubmit}>
+        <H1>Edit Song</H1>
+        <form>
           <div>
             <label htmlFor="artist">Artist:</label>
             <input
@@ -189,8 +216,19 @@ const FormPage = () => {
             padding={2}
             marginTop={20}
             color="white"
+            onClick={(e) => handleEdit(e)}
           >
-            Add Song
+            Update Song
+          </Button>
+          <Button
+            backgroundColor="red"
+            padding={2}
+            marginTop={20}
+            marginLeft={20}
+            color="white"
+            onClick={(e) => handleDelete(e)}
+          >
+            Delete Song
           </Button>
         </form>
       </FormContainer>
@@ -198,4 +236,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default DetailPage;

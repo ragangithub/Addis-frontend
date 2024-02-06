@@ -23,18 +23,6 @@ const songSlice = createSlice({
   name: "songs",
   initialState,
   reducers: {
-    // post song
-    postSongPending: (state, action) => {
-      state.isLoading = true;
-    },
-    postSongSuccess: (state, action) => {
-      state.isLoading = false;
-      state.songs.push(action.payload);
-    },
-    postSongFailure: (state, action) => {
-      state.isLoading = false;
-      state.error = true;
-    },
     // get song
     getSongPending: (state) => {
       state.isLoading = true;
@@ -46,14 +34,37 @@ const songSlice = createSlice({
     getSongFailure: (state, action) => {
       state.isLoading = false;
       state.error = true;
+    }, // post song
+    postSongPending: (state, action) => {
+      state.isLoading = true;
+    },
+    postSongSuccess: (state, action) => {
+      state.isLoading = false;
+      state.songs.push(action.payload);
+    },
+    postSongFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = true;
+    }, // delete song
+    deleteSongPending: (state, action) => {
+      state.isLoading = true;
+    },
+    deleteSongSuccess: (state, action) => {
+      state.isLoading = false;
+      const deletedSongId = action.payload;
+      state.songs = state.songs.filter((song) => song._id !== deletedSongId);
+    },
+    deleteSongFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = true;
     },
     // update song
-    updateSongPending: (state) => {
+    updateSongPending: (state, action) => {
       state.isLoading = true;
     },
     updateSongSuccess: (state, action) => {
       state.isLoading = false;
-      const updatedSong = action.payload; // Assuming the updated song is available in action.payload
+      const updatedSong = action.payload;
 
       state.songs = state.songs.map((song) => {
         if (song._id === updatedSong._id) {
@@ -63,22 +74,6 @@ const songSlice = createSlice({
       });
     },
     updateSongFailure: (state, action) => {
-      state.isLoading = false;
-      state.error = true;
-    },
-
-    // delete song
-    deleteSongPending: (state) => {
-      state.isLoading = true;
-    },
-    deleteSongSuccess: (state, action) => {
-      state.isLoading = false;
-      const deletedSongId = action.payload;
-      state.songs = state.songs.filter((song) => song._id !== deletedSongId);
-      console.log(state.songs, "start");
-      console.log(deletedSongId, "end");
-    },
-    deleteSongFailure: (state, action) => {
       state.isLoading = false;
       state.error = true;
     },

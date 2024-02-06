@@ -75,7 +75,6 @@ const Span = styled.span<StyledDivProps>`
 const SongsPage = () => {
   const { songs, isLoading } = useAppSelector(songSelector);
   const dispatch = useAppDispatch();
-  console.log("songs", songs);
 
   useEffect(() => {
     dispatch(getSongPending());

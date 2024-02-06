@@ -1,8 +1,9 @@
 ///** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import { jsx, css } from "@emotion/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
+
 import {
   typography,
   space,
@@ -78,9 +79,10 @@ interface SongCardProps {
 }
 
 export const SongCard = ({ song }: SongCardProps) => {
-  console.log("songggggggg", song);
+  const navigate = useNavigate();
+
   const handleCardClick = () => {
-    console.log("Hello");
+    navigate(`/details/${song._id}`);
   };
   return (
     <Div
