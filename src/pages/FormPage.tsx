@@ -3,16 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { postSongPending } from "../redux/songs/songSlice";
 import styled from "@emotion/styled";
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;

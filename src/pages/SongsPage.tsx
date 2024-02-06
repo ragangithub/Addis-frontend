@@ -8,16 +8,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { songSelector } from "../redux/store";
 import { getSongPending } from "../redux/songs/songSlice";
 
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;
@@ -53,11 +44,6 @@ const CardContainer = styled.div<StyledDivProps>`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 16px;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 
 const Span = styled.span<StyledDivProps>`
@@ -66,14 +52,11 @@ const Span = styled.span<StyledDivProps>`
   ${typography}
   ${space}
   ${color}
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 const SongsPage = () => {
   const { songs, isLoading } = useAppSelector(songSelector);
+  console.log("songss", songs);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {

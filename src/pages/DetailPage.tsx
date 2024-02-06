@@ -10,16 +10,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { songSelector } from "../redux/store";
 
 import styled from "@emotion/styled";
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;

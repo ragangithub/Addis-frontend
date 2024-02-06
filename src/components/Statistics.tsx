@@ -1,18 +1,13 @@
 ///** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { jsx, css } from "@emotion/react";
 import { NavLink } from "react-router-dom";
 import styled from "@emotion/styled";
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { statisticsSelector } from "../redux/store";
+import { getStatisticsPending } from "../redux/statistics/statisticSlice";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;
@@ -35,11 +30,6 @@ const Div = styled.div<StyledDivProps>`
   ${typography}
   ${space}
   ${color}
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 
 const Span = styled.span<StyledDivProps>`
@@ -48,19 +38,22 @@ const Span = styled.span<StyledDivProps>`
   ${typography}
   ${space}
   ${color}
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 
 export const Statistics = () => {
+  const { statistics, isLoading } = useAppSelector(statisticsSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getStatisticsPending());
+  }, [dispatch]);
+
+  if (isLoading) return <div>loading...</div>;
   return (
     <Div display="flex" justifyContent="space-around" padding={4}>
       <Div display="flex" flexDirection="column" color="#420039">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          10+
+          {statistics[0]?.totalSongs}
         </Span>
 
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
@@ -70,7 +63,7 @@ export const Statistics = () => {
 
       <Div className="flex flex-col items-center text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          10
+          {statistics[0]?.totalArtists}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Artists
@@ -79,7 +72,7 @@ export const Statistics = () => {
 
       <Div className="flex flex-col items-cente text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          10
+          {statistics[0]?.totalGenres}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Genres
@@ -87,7 +80,7 @@ export const Statistics = () => {
       </Div>
       <Div className="flex flex-col items-center text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          10+
+          {statistics[0]?.totalAlbums}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Albums

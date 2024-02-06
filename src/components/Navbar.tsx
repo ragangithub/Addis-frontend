@@ -49,11 +49,6 @@ const Div = styled.div<StyledDivProps>`
   ${typography}
   ${space}
   ${color}
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 
 interface Link {

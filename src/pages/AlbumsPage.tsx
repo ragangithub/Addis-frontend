@@ -8,16 +8,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { albumSelector } from "../redux/store";
 import { getAlbumPending } from "../redux/albums/albumSlice";
 
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;
@@ -53,11 +44,6 @@ const CardContainer = styled.div<StyledDivProps>`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 16px;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 
 const H1 = styled.h1<StyledDivProps>`

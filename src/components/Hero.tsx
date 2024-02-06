@@ -67,7 +67,7 @@ export const Hero = () => {
     <Div
       width="100%"
       height="100vh"
-      backgroundImage={`url("https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?s=612x612&w=0&k=20&c=bMG2SEUYaurIHAjtRbw7bmjLsXyT7iJUvAM5HjL3G3I=")`}
+      backgroundImage={`url("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`}
       backgroundSize="cover"
       backgroundRepeat="no-repeat"
       backgroundPosition="center"

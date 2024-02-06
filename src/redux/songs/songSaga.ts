@@ -23,8 +23,8 @@ function* createSong(action: any): Generator<any, void, any> {
   try {
     const data = action.payload;
     const response = yield call(() => axios.post(`${baseURL}`, data));
-    console.log("response", response);
-    const createdSong = yield response.data.song;
+
+    const createdSong = yield response.data;
     yield put(postSongSuccess(createdSong));
   } catch (error) {
     console.log(error);

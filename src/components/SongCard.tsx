@@ -4,16 +4,7 @@ import { jsx, css } from "@emotion/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 
-import {
-  typography,
-  space,
-  color,
-  position,
-  top,
-  zIndex,
-  flexbox,
-  layout,
-} from "styled-system";
+import { typography, space, color, flexbox, layout } from "styled-system";
 
 interface StyledDivProps {
   fontSize?: number;
@@ -48,11 +39,6 @@ const Div = styled.div<StyledDivProps>`
   &:hover {
     cursor: pointer;
   }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    color: black;
-  }
 `;
 const H1 = styled.h1<StyledDivProps>`
   ${layout}
@@ -82,7 +68,7 @@ export const SongCard = ({ song }: SongCardProps) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/details/${song._id}`);
+    navigate(`/details/${song?._id}`);
   };
   return (
     <Div
