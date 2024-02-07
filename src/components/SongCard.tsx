@@ -68,7 +68,7 @@ export const SongCard = ({ song }: SongCardProps) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/details/${song?._id}`);
+    navigate(`/details/${song._id}`);
   };
   return (
     <Div

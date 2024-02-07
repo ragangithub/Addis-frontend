@@ -60,9 +60,7 @@ interface AlbumCardProps {
   };
 }
 export const AlbumCard = ({ album }: AlbumCardProps) => {
-  const handleCardClick = () => {
-    console.log("Hello");
-  };
+  const handleCardClick = () => {};
   return (
     <Div
       backgroundColor="#F8F4F0"

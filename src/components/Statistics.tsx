@@ -53,7 +53,7 @@ export const Statistics = () => {
     <Div display="flex" justifyContent="space-around" padding={4}>
       <Div display="flex" flexDirection="column" color="#420039">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          {statistics[0]?.totalSongs}
+          {statistics[statistics.length - 1]?.totalSongs}
         </Span>
 
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
@@ -63,7 +63,7 @@ export const Statistics = () => {
 
       <Div className="flex flex-col items-center text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          {statistics[0]?.totalArtists}
+          {statistics[statistics.length - 1]?.totalArtists}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Artists
@@ -72,7 +72,7 @@ export const Statistics = () => {
 
       <Div className="flex flex-col items-cente text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          {statistics[0]?.totalGenres}
+          {statistics[statistics.length - 1]?.totalGenres}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Genres
@@ -80,7 +80,7 @@ export const Statistics = () => {
       </Div>
       <Div className="flex flex-col items-center text-mainColor">
         <Span color="rgb(66,0,57)" fontSize={50}>
-          {statistics[0]?.totalAlbums}
+          {statistics[statistics.length - 1]?.totalAlbums}
         </Span>
         <p className="text-base font-medium leading-7 text-center text-dark-grey-600">
           Albums

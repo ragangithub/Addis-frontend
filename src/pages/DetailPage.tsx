@@ -86,7 +86,7 @@ const DetailPage = () => {
     genre: "",
   });
 
-  const { songs, isLoading } = useAppSelector(songSelector);
+  const { songs } = useAppSelector(songSelector);
 
   let song = songs.filter((song) => song._id === id);
 
@@ -118,7 +118,7 @@ const DetailPage = () => {
 
   const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("edit");
+
     dispatch(updateSongPending({ ...formValues, id }));
     navigate("/songs");
   };

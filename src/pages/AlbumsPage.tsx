@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { AlbumCard } from "../components/AlbumCard";
-import { Statistics } from "../components/Statistics";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { albumSelector } from "../redux/store";
 import { getAlbumPending } from "../redux/albums/albumSlice";
+import { Statistics } from "../components/Statistics";
 
 import { typography, space, color, flexbox, layout } from "styled-system";
 
@@ -66,11 +66,6 @@ const AlbumsPage = () => {
       <Div padding={6} backgroundColor="rgb(249,250,251)">
         <H1 color="rgb(66,0,57)">Albums</H1>
 
-        {/* <CardContainer>
-          <AlbumCard />
-          <AlbumCard />
-          <AlbumCard />
-        </CardContainer> */}
         <CardContainer>
           {albums.map((album, index) => (
             <AlbumCard key={index} album={album} />

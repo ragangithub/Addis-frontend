@@ -1,7 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import baseURL from "../baseURL";
-import { get } from "http";
+import { createSlice } from "@reduxjs/toolkit";
 
 type Statistics = {
   totalSongs: number;
@@ -13,14 +10,14 @@ type Statistics = {
 type InitialState = {
   statistics: Statistics[];
   isLoading: boolean;
-  errMsg: any;
+
   error: boolean;
 };
 
 const initialState: InitialState = {
   statistics: [],
   isLoading: false,
-  errMsg: "",
+
   error: false,
 };
 const statisticSlice = createSlice({
@@ -37,7 +34,6 @@ const statisticSlice = createSlice({
     getStatisticsFailure: (state, action) => {
       state.isLoading = false;
       state.error = true;
-      state.errMsg = action.payload;
     },
   },
 });

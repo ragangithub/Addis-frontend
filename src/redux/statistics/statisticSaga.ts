@@ -7,6 +7,7 @@ function* fetchStatistics(): Generator<any, void, any> {
   try {
     const statistics = yield call(() => axios.get(`${baseURL}/statistics`));
     const formattedStatistics = yield statistics.data;
+
     yield put(getStatisticsSuccess(formattedStatistics));
   } catch (error) {
     console.log(error);

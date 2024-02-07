@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { SongCard } from "../components/SongCard";
-import { Statistics } from "../components/Statistics";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { songSelector } from "../redux/store";
 import { getSongPending } from "../redux/songs/songSlice";
+import { Statistics } from "../components/Statistics";
 
 import { typography, space, color, flexbox, layout } from "styled-system";
 
@@ -46,16 +46,8 @@ const CardContainer = styled.div<StyledDivProps>`
   grid-gap: 16px;
 `;
 
-const Span = styled.span<StyledDivProps>`
-  ${flexbox}
-  ${layout}
-  ${typography}
-  ${space}
-  ${color}
-`;
 const SongsPage = () => {
   const { songs, isLoading } = useAppSelector(songSelector);
-  console.log("songss", songs);
 
   const dispatch = useAppDispatch();
 
