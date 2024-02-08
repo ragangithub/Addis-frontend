@@ -73,7 +73,7 @@ Please find the Back-end for this project [here](https://github.com/ragangithub/
 
 - [video Demo Link](https://www.loom.com/share/879f926c6974458aaa5f259a7dec3d4c)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> --> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
