@@ -23,7 +23,7 @@ Please find the Back-end for this project [here](https://github.com/ragangithub/
   - [Tech Stack ](#tech-stack-)
   - [Key Features ](#key-features-)
   <!-- -   [🤯 Walk through video ](#walk-through) -->
-- [🚀 Live Demo ](#-live-demo-)
+- [🚀 video Demo ](#-live-demo-)
 - [💻 Getting Started ](#-getting-started-)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -69,9 +69,9 @@ Please find the Back-end for this project [here](https://github.com/ragangithub/
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 video Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://www.loom.com/share/879f926c6974458aaa5f259a7dec3d4c)
+- [video Demo Link](https://www.loom.com/share/879f926c6974458aaa5f259a7dec3d4c)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> --> -->
 
