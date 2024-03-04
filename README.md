@@ -82,7 +82,7 @@ Please find the Back-end for this project [here](https://github.com/ragangithub/
 To get a local copy up and running, follow these steps:
 
 - Clone this repo as described in the setup section.
-- Make modifications as peferred
+- Make modifications as peferred.
 
 ### Prerequisites
 
